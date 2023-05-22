@@ -1,0 +1,33 @@
+<form #form="ngForm">
+  <mat-form-field>
+    <input #cep matInput placeholder="CEP" id="cep" name="cep" value="" (blur)="consultarCEP($event, form)">
+  </mat-form-field>
+
+  <div>
+
+    <mat-form-field>
+      <input ngModel matInput #bairro placeholder="bairro" id="bairro" name="bairro" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input ngModel matInput #complemento placeholder="complemento" id="complemento" name="complemento" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input ngModel matInput #ddd placeholder="ddd" id="ddd" name="ddd" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input ngModel matInput #rua placeholder="rua" id="rua" name="rua" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input ngModel matInput #cidade placeholder="cidade" id="cidade" name="cidade" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input ngModel matInput #UF placeholder="UF" id="UF" name="UF" value="">
+    </mat-form-field>
+
+  </div>
+</form>
