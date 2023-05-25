@@ -6,13 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EnderecoComponent } from './endereco/endereco.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DataFormComponent } from './data-form/data-form.component';
-import { DataFormModule } from './data-form/data-form.module';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EnderecoComponent } from './endereco/endereco.component';
+import { DataFormComponent } from './data-form/data-form.component';
+import { DataFormModule } from './data-form/data-form.module';
 
 @NgModule({
   declarations: [
