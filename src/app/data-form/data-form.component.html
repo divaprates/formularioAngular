@@ -43,10 +43,18 @@
                         name="cidade" value="">
                 </mat-form-field>
 
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <mat-label>UF</mat-label>
                     <input ngModel matInput formControlName="uf" #UF placeholder="UF" id="UF" name="UF" value="">
-                </mat-form-field>
+                </mat-form-field> -->
+
+                <mat-form-field>
+                    <mat-label>UF</mat-label>
+                    <mat-select ngModel formControlName="uf" #UF id="UF" name="UF">
+                      <mat-option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
 
             </div>
 

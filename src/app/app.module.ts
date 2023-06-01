@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnderecoComponent } from './endereco/endereco.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { DataFormModule } from './data-form/data-form.module';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { DataFormModule } from './data-form/data-form.module';
     ReactiveFormsModule,
     DataFormModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

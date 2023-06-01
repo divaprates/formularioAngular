@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CepServiceService } from '../service/cep-service.service';
+import { EstadosService } from '../service/estados/estados.service';
+import { EstadoBr } from '../models/estado-br/estado-br';
+import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -11,8 +14,11 @@ export class DataFormComponent {
 
   formulario: FormGroup;
 
+  estados!: EstadoBr[];
+
   constructor(private formBuilder: FormBuilder,
-    private cepService: CepServiceService
+    private cepService: CepServiceService,
+    private estadosService: EstadosService
   ) {
     this.formulario = this.formBuilder.group({
       cep: [null],
@@ -25,16 +31,24 @@ export class DataFormComponent {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.listarEstados();
+  }
 
   consultarCEP() {
     let cep = this.formulario.get('cep')?.value;
 
-    if (cep != '') {
+    if (cep != '' && cep != null) {
       this.cepService.buscar(cep).subscribe(res => {
         this.popularDados(res);
       });
     }
+  }
+
+  listarEstados() {
+    this.estadosService.getEstadosBr().subscribe(res => {
+        this.estados = res;
+      });
   }
 
   popularDados(dados: any) {
