@@ -21,13 +21,17 @@ export class DataFormComponent {
     private estadosService: EstadosService
   ) {
     this.formulario = this.formBuilder.group({
-      cep: [null],
-      bairro: [null],
-      complemento: [null],
-      ddd: [null],
-      rua: [null],
-      cidade: [null],
-      uf: [null]
+      nome: [null],
+      aceite: [null],
+      endereco: this.formBuilder.group({
+        cep: [null],
+        bairro: [null],
+        complemento: [null],
+        ddd: [null],
+        rua: [null],
+        cidade: [null],
+        uf: [null]
+      }),
     });
   }
 
@@ -36,7 +40,7 @@ export class DataFormComponent {
   }
 
   consultarCEP() {
-    let cep = this.formulario.get('cep')?.value;
+    let cep = this.formulario.get('endereco.cep')?.value;
 
     if (cep != '' && cep != null) {
       this.cepService.buscar(cep).subscribe(res => {
@@ -52,14 +56,16 @@ export class DataFormComponent {
   }
 
   popularDados(dados: any) {
-    this.formulario.setValue({
-      cep: dados.cep,
-      bairro: dados.bairro,
-      complemento: dados.complemento,
-      ddd: dados.ddd,
-      rua: dados.logradouro,
-      cidade: dados.localidade,
-      uf: dados.uf,
+    this.formulario.patchValue({
+      endereco: ({
+        cep: dados.cep,
+        bairro: dados.bairro,
+        complemento: dados.complemento,
+        ddd: dados.ddd,
+        rua: dados.logradouro,
+        cidade: dados.localidade,
+        uf: dados.uf,
+      })
     })
   }
 

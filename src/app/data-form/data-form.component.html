@@ -8,55 +8,60 @@
     <mat-card-content>
         <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <mat-label>cep</mat-label>
-                <input #cep matInput formControlName="cep" placeholder="CEP" id="cep" name="cep" value=""
-                    (blur)="consultarCEP()">
+                <mat-label>nome</mat-label>
+                <input #nome matInput formControlName="nome" placeholder="nome" id="nome" name="nome" value="">
             </mat-form-field>
 
-            <div>
+            <div formGroupName="endereco">
 
                 <mat-form-field>
-                    <mat-label>bairro</mat-label>
-                    <input ngModel matInput formControlName="bairro" #bairro placeholder="bairro" id="bairro"
-                        name="bairro" value="">
+                    <mat-label>cep</mat-label>
+                    <input #cep matInput formControlName="cep" placeholder="CEP" id="cep" name="cep" value=""
+                        (blur)="consultarCEP()">
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>complemento</mat-label>
-                    <input ngModel matInput formControlName="complemento" #complemento placeholder="complemento"
-                        id="complemento" name="complemento" value="">
-                </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <mat-label>bairro</mat-label>
+                        <input ngModel matInput formControlName="bairro" #bairro placeholder="bairro" id="bairro"
+                            name="bairro" value="">
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>ddd</mat-label>
-                    <input ngModel matInput formControlName="ddd" #ddd placeholder="ddd" id="ddd" name="ddd" value="">
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>complemento</mat-label>
+                        <input ngModel matInput formControlName="complemento" #complemento placeholder="complemento"
+                            id="complemento" name="complemento" value="">
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>rua</mat-label>
-                    <input ngModel matInput formControlName="rua" #rua placeholder="rua" id="rua" name="rua" value="">
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>ddd</mat-label>
+                        <input ngModel matInput formControlName="ddd" #ddd placeholder="ddd" id="ddd" name="ddd"
+                            value="">
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>cidade</mat-label>
-                    <input ngModel matInput formControlName="cidade" #cidade placeholder="cidade" id="cidade"
-                        name="cidade" value="">
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>rua</mat-label>
+                        <input ngModel matInput formControlName="rua" #rua placeholder="rua" id="rua" name="rua"
+                            value="">
+                    </mat-form-field>
 
-                <!-- <mat-form-field>
-                    <mat-label>UF</mat-label>
-                    <input ngModel matInput formControlName="uf" #UF placeholder="UF" id="UF" name="UF" value="">
-                </mat-form-field> -->
+                    <mat-form-field>
+                        <mat-label>cidade</mat-label>
+                        <input ngModel matInput formControlName="cidade" #cidade placeholder="cidade" id="cidade"
+                            name="cidade" value="">
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>UF</mat-label>
-                    <mat-select ngModel formControlName="uf" #UF id="UF" name="UF">
-                      <mat-option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  
-
+                    <mat-form-field>
+                        <mat-label>UF</mat-label>
+                        <mat-select ngModel formControlName="uf" #UF id="UF" name="UF">
+                            <mat-option *ngFor="let estado of estados"
+                                [value]="estado.sigla">{{estado.nome}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
+
+            <mat-slide-toggle #aceite formControlName="aceite" id="aceite" name="aceite">Aceita os termos?</mat-slide-toggle>
 
             <mat-card-actions align="end">
                 <button mat-raised-button type="submit">SUBMIT</button>
