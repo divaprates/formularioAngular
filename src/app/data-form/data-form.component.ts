@@ -22,6 +22,7 @@ export class DataFormComponent {
   ) {
     this.formulario = this.formBuilder.group({
       nome: [null],
+      email: [null],
       aceite: [null],
       endereco: this.formBuilder.group({
         cep: [null],
@@ -35,7 +36,7 @@ export class DataFormComponent {
     });
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.listarEstados();
   }
 
@@ -51,8 +52,8 @@ export class DataFormComponent {
 
   listarEstados() {
     this.estadosService.getEstadosBr().subscribe(res => {
-        this.estados = res;
-      });
+      this.estados = res;
+    });
   }
 
   popularDados(dados: any) {

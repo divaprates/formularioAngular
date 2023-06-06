@@ -12,6 +12,11 @@
                 <input #nome matInput formControlName="nome" placeholder="nome" id="nome" name="nome" value="">
             </mat-form-field>
 
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input #email matInput formControlName="email" placeholder="email" id="email" name="email" value="">
+            </mat-form-field>
+
             <div formGroupName="endereco">
 
                 <mat-form-field>
@@ -61,11 +66,15 @@
                 </div>
             </div>
 
-            <mat-slide-toggle #aceite formControlName="aceite" id="aceite" name="aceite">Aceita os termos?</mat-slide-toggle>
+            <div>
+                <mat-slide-toggle #aceite formControlName="aceite" id="aceite" name="aceite">
+                    Aceita os termos?
+                </mat-slide-toggle>
+            </div>
 
             <mat-card-actions align="end">
                 <button mat-raised-button type="submit">SUBMIT</button>
-                <button mat-raised-button onclick="reset()">RESET</button>
+                <button mat-raised-button type="reset" onclick="reset()">RESET</button>
             </mat-card-actions>
         </form>
     </mat-card-content>
