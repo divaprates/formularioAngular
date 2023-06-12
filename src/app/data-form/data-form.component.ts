@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { distinctUntilChanged, empty, switchMap, tap } from 'rxjs';
+import { EstadoBr } from '../models/estado-br/estado-br';
 import { CepServiceService } from '../service/cep-service.service';
 import { EstadosService } from '../service/estados/estados.service';
-import { EstadoBr } from '../models/estado-br/estado-br';
-import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -25,7 +25,7 @@ export class DataFormComponent {
       email: [null],
       aceite: [null],
       endereco: this.formBuilder.group({
-        cep: [null],
+        cep: [null, Validators.minLength(8)],
         bairro: [null],
         complemento: [null],
         ddd: [null],
@@ -34,6 +34,17 @@ export class DataFormComponent {
         uf: [null]
       }),
     });
+
+    this.formulario.get('endereco.cep')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap(value => console.log("pipe - valor do cep: ", value)),
+        switchMap(status => status === 'VALID' ?
+          this.cepService.buscar(this.formulario.get('endereco.cep')?.value)
+          : empty()
+          )
+        )
+        .subscribe(dados => dados ?  this.popularDados(dados) : {});
   }
 
   ngOnInit() {
