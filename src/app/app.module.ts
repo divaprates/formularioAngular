@@ -15,13 +15,15 @@ import { DataFormComponent } from './data-form/data-form.component';
 import { DataFormModule } from './data-form/data-form.module';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { InputFieldComponent } from './shared/input-field/input-field.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EnderecoComponent,
-    DataFormComponent
+    DataFormComponent,
+    InputFieldComponent
   ],
   imports: [
     BrowserModule,

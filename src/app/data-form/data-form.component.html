@@ -7,53 +7,19 @@
 <mat-card>
     <mat-card-content>
         <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-            <mat-form-field>
-                <mat-label>nome</mat-label>
-                <input #nome matInput formControlName="nome" placeholder="nome" id="nome" name="nome" value="">
-            </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>email</mat-label>
-                <input #email matInput formControlName="email" placeholder="email" id="email" name="email" value="">
-            </mat-form-field>
+            <app-input-field formControlName="nome" id="nome"></app-input-field>
+            <app-input-field formControlName="email" id="email"></app-input-field>
 
             <div formGroupName="endereco">
-
-                <mat-form-field>
-                    <mat-label>cep</mat-label>
-                    <input #cep matInput formControlName="cep" placeholder="CEP" id="cep" name="cep" value="">
-                </mat-form-field>
+                <app-input-field formControlName="cep" id="cep"></app-input-field>
 
                 <div>
-                    <mat-form-field>
-                        <mat-label>bairro</mat-label>
-                        <input ngModel matInput formControlName="bairro" #bairro placeholder="bairro" id="bairro"
-                            name="bairro" value="">
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label>complemento</mat-label>
-                        <input ngModel matInput formControlName="complemento" #complemento placeholder="complemento"
-                            id="complemento" name="complemento" value="">
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label>ddd</mat-label>
-                        <input ngModel matInput formControlName="ddd" #ddd placeholder="ddd" id="ddd" name="ddd"
-                            value="">
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label>rua</mat-label>
-                        <input ngModel matInput formControlName="rua" #rua placeholder="rua" id="rua" name="rua"
-                            value="">
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label>cidade</mat-label>
-                        <input ngModel matInput formControlName="cidade" #cidade placeholder="cidade" id="cidade"
-                            name="cidade" value="">
-                    </mat-form-field>
+                    <app-input-field formControlName="bairro" id="bairro"></app-input-field>
+                    <app-input-field formControlName="complemento" id="complemento"></app-input-field>
+                    <app-input-field formControlName="ddd" id="ddd"></app-input-field>
+                    <app-input-field formControlName="rua" id="rua"></app-input-field>
+                    <app-input-field formControlName="cidade" id="cidade"></app-input-field>
 
                     <mat-form-field>
                         <mat-label>UF</mat-label>
