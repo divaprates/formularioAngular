@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { distinctUntilChanged, empty, switchMap, tap } from 'rxjs';
+import { distinctUntilChanged, empty, map, switchMap, tap } from 'rxjs';
+import { CidadeBr } from '../models/cidade-br/cidade-br';
 import { EstadoBr } from '../models/estado-br/estado-br';
 import { CepServiceService } from '../service/cep-service.service';
+import { CidadesService } from '../service/cidades/cidades.service';
 import { EstadosService } from '../service/estados/estados.service';
 import { BaseFormComponent } from '../shared/base-form/base-form.component';
 
@@ -13,11 +15,13 @@ import { BaseFormComponent } from '../shared/base-form/base-form.component';
 })
 export class DataFormComponent extends BaseFormComponent{
   
-  estados!: EstadoBr[];
+  estados: EstadoBr[] = [];
+  cidades: CidadeBr[]  = [];
   
   constructor(private formBuilder: FormBuilder,
     private cepService: CepServiceService,
-    private estadosService: EstadosService
+    private estadosService: EstadosService,
+    private cidadesService: CidadesService
     ) {
       super();
       
@@ -46,8 +50,21 @@ export class DataFormComponent extends BaseFormComponent{
         )
         )
         .subscribe(dados => dados ?  this.popularDados(dados) : {});
-      }
+        
+      this.formulario.get('endereco.uf')?.valueChanges
+      .pipe(
+        tap(estado => console.log('estado: ', estado)),
+        map(estado => this.estados.filter(e => e.sigla === estado)),
+        map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
+        switchMap(estadoId => this.cidadesService.getCidadesBr(Number(estadoId))),
+        tap()
+      )
+      .subscribe(
+        cidades => this.cidades = cidades
+        );
       
+      }
+
       override ngOnInit() {
         this.listarEstados();
       }
@@ -66,6 +83,12 @@ export class DataFormComponent extends BaseFormComponent{
         this.estadosService.getEstadosBr().subscribe(res => {
           this.estados = res;
         });
+      }
+
+      listarCidades(idEstado: number) {
+        this.cidadesService.getCidadesBr(idEstado).subscribe(res => {
+          this.cidades = res;
+        })
       }
       
       popularDados(dados: any) {

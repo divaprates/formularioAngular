@@ -19,7 +19,6 @@
                     <app-input-field formControlName="complemento" id="complemento"></app-input-field>
                     <app-input-field formControlName="ddd" id="ddd"></app-input-field>
                     <app-input-field formControlName="rua" id="rua"></app-input-field>
-                    <app-input-field formControlName="cidade" id="cidade"></app-input-field>
 
                     <mat-form-field>
                         <mat-label>UF</mat-label>
@@ -28,6 +27,15 @@
                                 [value]="estado.sigla">{{estado.nome}}</mat-option>
                         </mat-select>
                     </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>cidade</mat-label>
+                        <mat-select ngModel formControlName="cidade" #cidade id="cidade" name="cidade">
+                            <mat-option *ngFor="let cidade of cidades"
+                                [value]="cidade.nome">{{cidade.nome}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
                 </div>
             </div>
 
