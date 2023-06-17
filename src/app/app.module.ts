@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { BrowserModule } from '@angular/platform-browser';
 
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EnderecoComponent } from './endereco/endereco.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { DataFormModule } from './data-form/data-form.module';
-import { MatSelectModule } from '@angular/material/select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { EnderecoComponent } from './endereco/endereco.component';
 import { InputFieldComponent } from './shared/input-field/input-field.component';
 
 
@@ -23,7 +23,7 @@ import { InputFieldComponent } from './shared/input-field/input-field.component'
     AppComponent,
     EnderecoComponent,
     DataFormComponent,
-    InputFieldComponent
+    InputFieldComponent,
   ],
   imports: [
     BrowserModule,
