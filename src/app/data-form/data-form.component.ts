@@ -57,11 +57,10 @@ export class DataFormComponent extends BaseFormComponent{
         map(estado => this.estados.filter(e => e.sigla === estado)),
         map(estados => estados && estados.length > 0 ? estados[0].id : empty()),
         switchMap(estadoId => this.cidadesService.getCidadesBr(Number(estadoId))),
-        tap()
       )
       .subscribe(
         cidades => this.cidades = cidades
-        );
+      );
       
       }
 
