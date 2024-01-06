@@ -1,4 +1,4 @@
-# formularioAngular
+# Formulario Angular
 - Estudo Angular
 - Referências utilizadas: Loiane.training
 
